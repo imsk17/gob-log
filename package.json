@@ -1,0 +1,9 @@
+{
+  "name": "goblog",
+  "version": "0.1.0",
+  "description": "A No Javashite Blog (Kind of).",
+  "main": "index.js",
+  "repository": "https://github.com/imsk17/Blog",
+  "author": "imsk17 <imsumitkumar17@gmail.com>",
+  "license": "MIT"
+}
