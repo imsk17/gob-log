@@ -6,6 +6,11 @@
   "repository": "https://github.com/imsk17/Blog",
   "author": "imsk17 <imsumitkumar17@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "postcss static/tailwind.css -o static/tailwind.g.css",
+    "clean": "rm -rf static/tailwind.g.css",
+    "release": "NODE_ENV=production postcss static/tailwind.css -o static/tailwind.g.css"
+  },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "autoprefixer": "^10.2.5",
