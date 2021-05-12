@@ -12,3 +12,32 @@
 button:focus {
   outline: none;
 }
+pre,
+img {
+  padding: 2rem;
+  border-radius: 4px;
+  margin: 2rem 0rem;
+}
+
+.title {
+  border-bottom-color: rgba(132, 204, 22, 1);
+  border-bottom: 8px;
+  text-decoration: underline;
+  text-underline-offset: -4px;
+  text-decoration-thickness: 3px;
+  text-decoration-line: underline;
+  text-decoration-line: rgba(132, 204, 22, 1);
+}
+
+h1 {
+  @apply text-2xl my-4;
+}
+h2 {
+  @apply text-xl my-2;
+}
+code {
+  color: rgba(132, 204, 22, 1);
+  background-color: black;
+  padding: 4px;
+  border-radius: 2px;
+}

@@ -1,55 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sumit's Blog | Home</title>
+    <link rel="stylesheet" href="/static/tailwind.g.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Sumit's Blog | Home</title>
-  <link rel="stylesheet" href="/static/tailwind.g.css">
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Sumit's Blog | Home" />
+    <meta
+      name="description"
+      content="Hi, I am a young, driven Software Engineer. I love working on anything software. On this blog, I write about all my adventures in the software world."
+    />
 
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="Sumit's Blog | Home">
-  <meta name="description"
-    content="Hi, I am a young, driven Software Engineer. I love working on anything software. On this blog, I write about all my adventures in the software world.">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://blog.imsk17.tech/" />
+    <meta property="og:title" content="Sumit's Blog | Home" />
+    <meta
+      property="og:description"
+      content="Hi, I am a young, driven Software Engineer. I love working on anything software. On this blog, I write about all my adventures in the software world."
+    />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://blog.imsk17.tech/">
-  <meta property="og:title" content="Sumit's Blog | Home">
-  <meta property="og:description"
-    content="Hi, I am a young, driven Software Engineer. I love working on anything software. On this blog, I write about all my adventures in the software world.">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://blog.imsk17.tech/" />
+    <meta property="twitter:title" content="Sumit's Blog | Home" />
+    <meta
+      property="twitter:description"
+      content="Hi, I am a young, driven Software Engineer. I love working on anything software. On this blog, I write about all my adventures in the software world."
+    />
+  </head>
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://blog.imsk17.tech/">
-  <meta property="twitter:title" content="Sumit's Blog | Home">
-  <meta property="twitter:description"
-    content="Hi, I am a young, driven Software Engineer. I love working on anything software. On this blog, I write about all my adventures in the software world.">
-</head>
+  <body>
+    {{ template "templates/components/header" .}}
+    <main class="p-4">
+      {{if .NoBlogs}}
 
-<body>
-  {{ template "templates/components/header" .}}
-  <main class="p-4">
+      <h1 class="font-bold text-2xl text-center">
+        Sorry, I am lazy, I also can't write.
+      </h1>
 
-    {{if .NoBlogs}}
-
-    <h1 class="font-bold text-2xl text-center">
-      Sorry, I am lazy, I also can't write.
-    </h1>
-
-    {{else}}
-    <div class="flex flex-col">
-      {{ range .Blogs }}
-      <div class="m-2">
-        {{template "templates/components/card" .}}
+      {{else}}
+      <div class="flex flex-col">
+        {{ range .Blogs }}
+        <div class="m-2">{{template "templates/components/card" .}}</div>
+        {{ end }}
       </div>
-      {{ end }}
+      {{end}}
+    </main>
+    <div class="fixed bottom-0 left-0 right-0">
+      {{ template "templates/components/footer" .Go}}
     </div>
-    {{end}}
-  </main>
-  {{ template "templates/components/footer" .Go}}
-</body>
-
+  </body>
 </html>

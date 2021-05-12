@@ -7,7 +7,7 @@ Tags:
   - jetpack
 PublishDate: August 5, 2020
 SkimTime: 5 Minutes
-Image: blog1.jpeg
+Author: Sumit Kumar (imsk17)
 ---
 
 # How not to write Android Apps.
@@ -15,5 +15,5 @@ Image: blog1.jpeg
 ## Please Use Kotlin. I beg you to give up on java.
 
 ```kotlin
-const bruh: String = "bruh"
+const warning: String = "Use Java or Die."
 ```

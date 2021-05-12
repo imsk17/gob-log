@@ -2,15 +2,15 @@ package main
 
 import (
 	"embed"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/filesystem"
+	"github.com/gofiber/template/html"
 	"go-blog/src"
 	"html/template"
 	"log"
 	"net/http"
+	"net/url"
 	"runtime"
-
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/filesystem"
-	"github.com/gofiber/template/html"
 )
 
 // Embed the static/ directory to the app to serve favicons, custom css
@@ -23,8 +23,10 @@ var static embed.FS
 var t embed.FS
 
 //Embed Our Actual Content aka The Blogs.
-//go:embed posts/*
+//go:embed posts/*.md
 var posts embed.FS
+
+var blogs, _ = src.ReadBlogs(posts)
 
 func main() {
 
@@ -48,15 +50,16 @@ func main() {
 
 	app.Get("/", func(ctx *fiber.Ctx) error {
 		return ctx.Render("templates/index", fiber.Map{
-			"NoBlogs": true, // Use this switch to show hide all blogs.
+			"NoBlogs": false, // Use this switch to show hide all blogs.
+			"Blogs": blogs,
 			"Go":      runtime.Version(),
 		})
 	})
 
 	// Setup a Path for Blog
 	app.Get("/:title", func(ctx *fiber.Ctx) error {
-		title := ctx.Params("title", "")
-		theme := ctx.Query("theme", "solarized-dark")
+		title, _ := url.PathUnescape(ctx.Params("title", ""))
+		theme := ctx.Query("theme", "dracula")
 		if title == "" {
 			return ctx.SendStatus(http.StatusNotFound)
 		}
@@ -64,7 +67,10 @@ func main() {
 		if err != nil {
 			return ctx.SendStatus(http.StatusBadRequest)
 		}
-		return ctx.Render("templates/blog", blog)
+		return ctx.Render("templates/blog", fiber.Map{
+			"Blog": blog,
+			"Go":   runtime.Version(),
+		})
 	})
 
 	// Mount the static directory

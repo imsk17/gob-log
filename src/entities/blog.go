@@ -9,4 +9,13 @@ type Blog struct {
 	Image       string
 	Href        string
 	SkimTime    string
+	Author      string
+}
+
+type BlogMeta struct {
+	Title       string
+	PublishDate string
+	Tags        []string
+	SkimTime    string
+	Href        string
 }
