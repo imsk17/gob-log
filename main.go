@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"runtime"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
@@ -47,7 +48,8 @@ func main() {
 
 	app.Get("/", func(ctx *fiber.Ctx) error {
 		return ctx.Render("templates/index", fiber.Map{
-			"Title": "again, mate.",
+			"NoBlogs": true, // Use this switch to show hide all blogs.
+			"Go":      runtime.Version(),
 		})
 	})
 
