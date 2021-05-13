@@ -10,7 +10,7 @@ SkimTime: 5 Minutes
 Author: Sumit Kumar (imsk17)
 ---
 
-# How not to write Android Apps.
+# How not to write Android Apps :rocket: .
 
 ## Please Use Kotlin. I beg you to give up on java.
 

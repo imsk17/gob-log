@@ -4,14 +4,16 @@ import (
 	"bytes"
 	"embed"
 	"fmt"
-	"github.com/yuin/goldmark"
-	highlighting "github.com/yuin/goldmark-highlighting"
-	meta "github.com/yuin/goldmark-meta"
-	"github.com/yuin/goldmark/parser"
 	"go-blog/src/entities"
 	"go-blog/src/errs"
 	"strings"
 	"time"
+
+	"github.com/yuin/goldmark"
+	emoji "github.com/yuin/goldmark-emoji"
+	highlighting "github.com/yuin/goldmark-highlighting"
+	meta "github.com/yuin/goldmark-meta"
+	"github.com/yuin/goldmark/parser"
 )
 
 // This function is the whole and soul of this web app.
@@ -27,6 +29,7 @@ func HTMLify(filename string, fs embed.FS, theme string) (entities.Blog, error) 
 				highlighting.WithFormatOptions(),
 			),
 			meta.Meta,
+			emoji.Emoji,
 		),
 	)
 	context := parser.NewContext()
@@ -58,11 +61,11 @@ func ReadBlogs(f embed.FS) ([]entities.BlogMeta, error) {
 		splits := strings.Split(v.Name(), "-")
 		t, _ := time.Parse("02012006", splits[1])
 		b := entities.BlogMeta{
-			SkimTime: fmt.Sprintf("%v Mins Read", splits[0]),
-			Title: strings.ReplaceAll(strings.ReplaceAll(splits[2], "_", " "), ".md", ""),
+			SkimTime:    fmt.Sprintf("%v Mins Read", splits[0]),
+			Title:       strings.ReplaceAll(strings.ReplaceAll(splits[2], "_", " "), ".md", ""),
 			PublishDate: strings.ReplaceAll(t.Format(time.RFC1123), "00:00:00 UTC", ""),
-			Href: strings.ReplaceAll(v.Name(), ".md" ,""),
-			Tags: strings.Split(splits[3][1:len(splits[3])-4], " "),
+			Href:        strings.ReplaceAll(v.Name(), ".md", ""),
+			Tags:        strings.Split(splits[3][1:len(splits[3])-4], " "),
 		}
 		blogs = append(blogs, b)
 	}
