@@ -11,7 +11,7 @@ require (
 	github.com/valyala/fasthttp v1.24.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/yuin/goldmark v1.3.5
-	github.com/yuin/goldmark-emoji v1.0.1 // indirect
+	github.com/yuin/goldmark-emoji v1.0.1
 	github.com/yuin/goldmark-highlighting v0.0.0-20210428103930-3a9678dbb86c
 	github.com/yuin/goldmark-meta v1.0.0
 	golang.org/x/sys v0.0.0-20210426230700-d19ff857e887 // indirect
