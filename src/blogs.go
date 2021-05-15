@@ -6,8 +6,6 @@ import (
 	"fmt"
 	"go-blog/src/entities"
 	"go-blog/src/errs"
-	"strings"
-	"time"
 
 	"github.com/yuin/goldmark"
 	emoji "github.com/yuin/goldmark-emoji"
@@ -20,7 +18,7 @@ import (
 // It parses the html from the markdown file and converts
 // into HTML. Also, Extracts metadata about the blog.
 func HTMLify(filename string, fs embed.FS, theme string) (entities.Blog, error) {
-	path := fmt.Sprintf("posts/%s.md", filename)
+	path := fmt.Sprintf("posts/%s", filename)
 	var b entities.Blog
 	markdown := goldmark.New(
 		goldmark.WithExtensions(
@@ -42,31 +40,29 @@ func HTMLify(filename string, fs embed.FS, theme string) (entities.Blog, error) 
 		panic(err)
 	}
 	metaData := meta.Get(context)
+	idx, _ := metaData["Index"].(int)
+	skim, _ := metaData["SkimTime"].(int)
 	b = entities.Blog{
-		Title:       metaData["Title"].(string),
-		Content:     buf.String(),
-		Tags:        metaData["Tags"].([]interface{}),
-		Summary:     metaData["Summary"].(string),
-		PublishDate: metaData["PublishDate"].(string),
-		SkimTime:    metaData["SkimTime"].(string),
-		Author:      metaData["Author"].(string),
+		Index:    idx,
+		Title:    metaData["Title"].(string),
+		Dept:     metaData["Dept"].(string),
+		Content:  buf.String(),
+		Subtopic: metaData["Subtopic"].(string),
+		Date:     metaData["Date"].(string),
+		Time:     metaData["Time"].(string),
+		SkimTime: skim,
+		Author:   metaData["Author"].(string),
+		Topic:    metaData["Topic"].(string),
+		Href:     filename,
 	}
 	return b, nil
 }
 
-func ReadBlogs(f embed.FS) ([]entities.BlogMeta, error) {
-	var blogs []entities.BlogMeta
+func ReadBlogs(f embed.FS) ([]entities.Blog, error) {
+	var blogs []entities.Blog
 	allBlogs, _ := f.ReadDir("posts")
 	for _, v := range allBlogs {
-		splits := strings.Split(v.Name(), "-")
-		t, _ := time.Parse("02012006", splits[1])
-		b := entities.BlogMeta{
-			SkimTime:    fmt.Sprintf("%v Mins Read", splits[0]),
-			Title:       strings.ReplaceAll(strings.ReplaceAll(splits[2], "_", " "), ".md", ""),
-			PublishDate: strings.ReplaceAll(t.Format(time.RFC1123), "00:00:00 UTC", ""),
-			Href:        strings.ReplaceAll(v.Name(), ".md", ""),
-			Tags:        strings.Split(splits[3][1:len(splits[3])-4], " "),
-		}
+		b, _ := HTMLify(v.Name(), f, "dracula")
 		blogs = append(blogs, b)
 	}
 	return blogs, nil

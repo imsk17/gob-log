@@ -1,12 +1,13 @@
 ---
-Title: Blog - How not to write Android Apps.
+Index: 01
+Dept: Android
+Title: How not to write Android Apps.
+Subtopic: android.kotlin.jetpack
+Date: 16-05-2021
+Time: 15:05:29.440
+Topic: Android Jetpack
 Summary: Some Android Wisdom Seriously.
-Tags:
-  - android
-  - kotlin
-  - jetpack
-PublishDate: August 5, 2020
-SkimTime: 5 Minutes
+SkimTime: 05
 Author: Sumit Kumar (imsk17)
 ---
 
