@@ -11,7 +11,9 @@ module.exports = {
       blue: '#819DB5',
       white: '#FFFFFF',
       green: '#B9C36A',
-      red: '#B8505B'
+      red: '#B8505B',
+      grey: '#959595',
+      hr: '#292A2E'
     }
   },
   corePlugins: {
