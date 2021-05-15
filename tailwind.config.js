@@ -1,19 +1,12 @@
 const colors = require("tailwindcss/colors")
 module.exports = {
-  purge: false,
+  purge: [
+    './templates/*.html',
+  ],
   darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {
-      boxShadow: {
-        'sharp-xl': '8px 8px 0px #000',
-        'sharp-lg': '5px 5px 0px #000',
-        'sharp-md': '3px 3px 0px #000'
-      },
-      colors: {
-        lime: colors.lime
-      }
-    },
-    
+  theme: {},
+  corePlugins: {
+    preflight: false
   },
   variants: {
     extend: {},

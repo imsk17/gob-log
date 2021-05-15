@@ -2,43 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Bring in the fonts */
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
+/* Custom Styles */
 * {
-  font-family: "IBM Plex Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 :focus,
 button:focus {
-  outline: none;
-}
-pre,
-img {
-  padding: 2rem;
-  border-radius: 4px;
-  margin: 2rem 0rem;
-  font-weight: normal;
-}
-
-.title {
-  border-bottom-color: rgba(132, 204, 22, 1);
-  border-bottom: 8px;
-  text-decoration: underline;
-  text-underline-offset: -4px;
-  text-decoration-thickness: 3px;
-  text-decoration-line: underline;
-  text-decoration-line: rgba(132, 204, 22, 1);
-}
-
-h1 {
-  @apply text-2xl my-4;
-}
-h2 {
-  @apply text-xl my-2;
-}
-code {
-  color: rgba(132, 204, 22, 1);
-  background-color: black;
-  padding: 4px;
-  border-radius: 2px;
+    outline: none;
 }
