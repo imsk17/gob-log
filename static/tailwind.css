@@ -14,3 +14,11 @@
 button:focus {
     outline: none;
 }
+
+body {
+    @apply bg-primarybg;
+}
+
+.footer-tile {
+    @apply h-9 w-20 flex items-center justify-center;
+}
