@@ -16,7 +16,7 @@ button:focus {
 }
 
 body {
-    @apply bg-primarybg;
+    @apply bg-primarybg p-0 m-0;
 }
 
 .footer-tile {
