@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/static/favicon.svg" type="image/x-icon" />
-    <title>{{.Blog.Title}}</title>
-    <link rel="stylesheet" href="/static/tailwind.g.css" />
-  </head>
 
-  <body>
-    {{template "templates/components/header" .}}
-    <main class="px-4 py-4 lg:px-32 lg:py-8">
-      <h1 class="font-bold">{{.Blog.Title}}</h1>
-      <h3 class="font-bold">
-        > By - <span class="text-lime-500">{{.Blog.Author}}</span>
-      </h3>
-      <h3 class="font-bold">
-        > On - <span class="text-lime-500">{{.Blog.PublishDate}}</span>
-      </h3>
-      <h3 class="font-bold">> Tags - {{range .Blog.Tags}} #{{.}} {{end}}</h3>
-      <hr class="border border-dashed mt-8" />
-      <div class="py-8 font-semibold content">{{unescape .Blog.Content}}</div>
-    </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/static/favicon.svg" type="image/x-icon" />
+  <title>{{.Blog.Title}}</title>
+  <link rel="stylesheet" href="/static/tailwind.g.css" />
+</head>
+
+<body>
+  <div class="mx-auto head">
+    <h1 class="text-white text-center mx-0">
+      {{.Blog.Title}}
+    </h1>
+    <div class="bg-secondarybg h-9 flex items-center justify-between px-4">
+      <p class="text-green font-semibold">By - {{.Blog.Author}}</p>
+      <p class="text-blue font-semibold">{{.Blog.SkimTime}} Mins Read</p>
+    </div>
+    <hr class="border-hr border-dashed mx-5" />
+    <div class="content">
+      {{unescape .Blog.Content}}
+    </div>
+  </div>
+  <div class="fixed bottom-0 left-0 right-0">
     {{template "templates/components/footer" .Go }}
-  </body>
+  </div>
+</body>
+
 </html>

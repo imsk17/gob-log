@@ -22,3 +22,19 @@ body {
 .footer-tile {
     @apply h-9 w-20 flex items-center justify-center;
 }
+
+.head {
+    width: fit-content;
+}
+
+/* purgecss ignore */
+pre {
+    padding: 1.5rem;
+    border-radius: 4px;
+    font-weight: normal;
+    background-color: #292A2E !important;
+}
+
+.content {
+    color: white;
+}
