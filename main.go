@@ -2,15 +2,18 @@ package main
 
 import (
 	"embed"
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/filesystem"
-	"github.com/gofiber/template/html"
+	"fmt"
 	"go-blog/src"
 	"html/template"
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"runtime"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/filesystem"
+	"github.com/gofiber/template/html"
 )
 
 // Embed the static/ directory to the app to serve favicons, custom css
@@ -29,6 +32,15 @@ var posts embed.FS
 var blogs, _ = src.ReadBlogs(posts)
 
 func main() {
+
+	PORT := "4000"
+	OSPORT := os.Getenv("PORT")
+
+	if OSPORT != "" {
+		PORT = OSPORT
+	} else {
+		fmt.Printf("PORT Env Variable not set, Using the default port: %s Instead", PORT)
+	}
 
 	// Setup a Template Engine
 	engine := html.NewFileSystem(http.FS(t), ".html")
@@ -51,7 +63,7 @@ func main() {
 	app.Get("/", func(ctx *fiber.Ctx) error {
 		return ctx.Render("templates/index", fiber.Map{
 			"NoBlogs": false, // Use this switch to show hide all blogs.
-			"Blogs": blogs,
+			"Blogs":   blogs,
 			"Go":      runtime.Version(),
 		})
 	})
@@ -81,5 +93,5 @@ func main() {
 		}))
 
 	// Start the fiber app woo-hoo.
-	log.Panic(app.Listen(":4000"))
+	log.Panic(app.Listen(":" + PORT))
 }
