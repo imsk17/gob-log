@@ -24,17 +24,25 @@ body {
 }
 
 .head {
-    width: fit-content;
+    width: 60%;
 }
 
 /* purgecss ignore */
 pre {
     padding: 1.5rem;
-    border-radius: 4px;
     font-weight: normal;
     background-color: #292A2E !important;
+    overflow-x: auto;
 }
 
 .content {
     color: white;
+    margin-bottom: 8rem;
+}
+
+/* purgecss ignore */
+blockquote {
+    border-left: 5px solid #292A2E;
+    padding-inline: 10px;
+    margin: 0px;
 }
