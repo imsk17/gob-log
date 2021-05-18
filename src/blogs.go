@@ -12,6 +12,7 @@ import (
 	highlighting "github.com/yuin/goldmark-highlighting"
 	meta "github.com/yuin/goldmark-meta"
 	"github.com/yuin/goldmark/parser"
+	"github.com/yuin/goldmark/renderer/html"
 )
 
 // This function is the whole and soul of this web app.
@@ -28,6 +29,9 @@ func HTMLify(filename string, fs embed.FS, theme string) (entities.Blog, error) 
 			),
 			meta.Meta,
 			emoji.Emoji,
+		),
+		goldmark.WithRendererOptions(
+			html.WithUnsafe(),
 		),
 	)
 	context := parser.NewContext()
