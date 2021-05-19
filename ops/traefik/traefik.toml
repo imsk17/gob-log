@@ -1,0 +1,28 @@
+[global]
+    checkNewVersion = true
+
+[entryPoints]
+    [entryPoints.web]
+      address = ":80"
+    [entryPoints.websecure]
+      address = ":443"
+
+[log]
+    level = "ERROR"
+
+[api]
+    insecure = true
+    dashboard = true
+
+[providers]
+  [providers.file]
+    watch = true
+    filename = "dynamic.toml"
+    directory = "."
+
+[certificatesResolvers.blog.acme]
+  email = "imsumitkr17@gmail.com"
+  storage = "acme.json"
+  [certificatesResolvers.blog.acme.httpChallenge]
+    # used during the challenge
+    entryPoint = "web"

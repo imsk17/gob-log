@@ -1,0 +1,23 @@
+[http]
+  [http.routers]
+    [http.routers.blogrouterssl]
+      middlewares = ["red"]
+      entryPoints = ["websecure", "web"]
+      service = "blogservice"
+      rule = "Host(`blog.imsk17.tech`)"
+      [http.routers.blogrouterssl.tls]
+        certResolver = "blog"
+    [http.routers.blogrouter]
+      middlewares = ["red"]
+      entryPoints = ["web"]
+      service = "blogservice"
+      rule = "Host(`blog.imsk17.tech`)"
+  [http.middlewares]
+    [http.middlewares.red.redirectScheme]
+      scheme = "https"
+      permanent = true
+  [http.services]
+    [http.services.blogservice]
+      [http.services.blogservice.loadBalancer]
+        [[http.services.blogservice.loadBalancer.servers]]
+          url = "http://localhost:4000"
