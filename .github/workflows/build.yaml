@@ -1,0 +1,26 @@
+name: Release CI
+on:
+  push:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses:  actions/setup-go@v2
+        with:
+          go-version: 1.16.4
+      -  run: make build
+      # Upload generated artifacts.
+      - uses: marvinpinto/action-automatic-releases@latest
+        with:
+           prerelease: false
+           repo_token: ${{ secrets.BLOG }}
+           automatic_release_tag: "latest"
+           title: "Latest Release"
+           files: |
+             LICENSE
+             dist/*
