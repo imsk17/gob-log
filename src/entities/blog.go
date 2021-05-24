@@ -13,11 +13,3 @@ type Blog struct {
 	Author   string
 	Href     string
 }
-
-// type BlogMeta struct {
-// 	Title       string
-// 	PublishDate string
-// 	Tags        []string
-// 	SkimTime    string
-// 	Href        string
-// }
