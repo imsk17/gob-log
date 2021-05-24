@@ -2,14 +2,11 @@ package main
 
 import (
 	"embed"
-	"fmt"
-	"go-blog/src"
+	"go-blog/src/handlers"
 	"html/template"
 	"log"
 	"net/http"
-	"net/url"
 	"os"
-	"runtime"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
@@ -29,8 +26,6 @@ var t embed.FS
 //go:embed posts/*.md
 var posts embed.FS
 
-var blogs, _ = src.ReadBlogs(posts)
-
 func main() {
 
 	PORT := "4000"
@@ -39,7 +34,7 @@ func main() {
 	if OSPORT != "" {
 		PORT = OSPORT
 	} else {
-		fmt.Printf("PORT Env Variable not set, Using the default port: %s Instead", PORT)
+		log.Printf("PORT Env Variable not set, Using the default port: %s Instead", PORT)
 	}
 
 	// Setup a Template Engine
@@ -60,30 +55,8 @@ func main() {
 			Views: engine,
 		})
 
-	app.Get("/", func(ctx *fiber.Ctx) error {
-		return ctx.Render("templates/index", fiber.Map{
-			"NoBlogs": false, // Use this switch to show hide all blogs.
-			"Blogs":   blogs,
-			"Go":      runtime.Version(),
-		})
-	})
-
-	// Setup a Path for Blog
-	app.Get("/:title", func(ctx *fiber.Ctx) error {
-		title, _ := url.PathUnescape(ctx.Params("title", ""))
-		theme := ctx.Query("theme", "dracula")
-		if title == "" {
-			return ctx.SendStatus(http.StatusNotFound)
-		}
-		blog, err := src.HTMLify(title, posts, theme)
-		if err != nil {
-			return ctx.SendStatus(http.StatusBadRequest)
-		}
-		return ctx.Render("templates/blog", fiber.Map{
-			"Blog": blog,
-			"Go":   runtime.Version(),
-		})
-	})
+	// Setup handlers for the blogs
+	handlers.SetupRoutes(app, posts)
 
 	// Mount the static directory
 	app.Use("/", filesystem.New(

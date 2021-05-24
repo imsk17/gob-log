@@ -1,4 +1,4 @@
-package src
+package parser
 
 import (
 	"bytes"
@@ -62,11 +62,12 @@ func HTMLify(filename string, fs embed.FS, theme string) (entities.Blog, error) 
 	return b, nil
 }
 
+// Readblog reads the filesystem to collect all the blogs from the FS
 func ReadBlogs(f embed.FS) ([]entities.Blog, error) {
 	var blogs []entities.Blog
 	allBlogs, _ := f.ReadDir("posts")
 	for _, v := range allBlogs {
-		b, _ := HTMLify(v.Name(), f, "dracula")
+		b, _ := HTMLify(v.Name(), f, "nord")
 		blogs = append(blogs, b)
 	}
 	return blogs, nil
