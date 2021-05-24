@@ -53,3 +53,13 @@ code {
     font-weight: 900;
     @apply text-red;
 }
+
+/* purgecss ignore */
+.content h1 {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+/* purgecss ignore */
+.content h2 {
+    font-size: clamp(0.8rem, 1.5vw, 1.6rem);
+}
