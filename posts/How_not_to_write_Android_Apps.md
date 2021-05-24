@@ -8,7 +8,7 @@ Time: 15:05:29.440
 Topic: Android Jetpack
 Summary: Some Android Wisdom Seriously.
 SkimTime: 05
-Author: Sumit Kumar (imsk17)
+Author: Sumit Kumar
 ---
 
 # How not to write Android Apps :rocket: .

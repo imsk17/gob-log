@@ -10,22 +10,23 @@
   <link rel="stylesheet" href="/static/tailwind.g.css" />
 </head>
 
-<body>
-  <div class="mx-auto head">
-    <h1 class="text-white text-center mx-0">
-      {{.Blog.Title}}
-    </h1>
+<body class="sm:p-2 md:p-0 lg:p-0">
+  <div class="mx-auto sm:w-max md:w-4/5 lg:w-2/3">
+    <div>
+      <h1 class="text-white text-2xl md:text-3xl lg:text-4xl text-center mx-0">
+        {{.Blog.Title}} </h1>
+    </div>
     <div class="bg-secondarybg h-9 flex items-center justify-between px-4">
-      <p class="text-green font-semibold">By - {{.Blog.Author}}</p>
+      <p class="text-green font-semibold">{{.Blog.Author}}</p>
       <p class="text-blue font-semibold">{{.Blog.SkimTime}} Mins Read</p>
     </div>
-    <hr class="border-hr border-dashed mx-5" />
-    <div class="content">
+    <hr class="border-hr border-dashed" />
+    <div class="content px-4 md:p-0">
       {{unescape .Blog.Content}}
     </div>
   </div>
   <div class="mt-14 bg-primarybg fixed bottom-0 left-0 right-0">
-    <div class="">
+    <div>
       {{template "templates/components/footer" .Go }}
     </div>
   </div>

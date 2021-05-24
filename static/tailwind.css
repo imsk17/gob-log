@@ -46,3 +46,10 @@ blockquote {
     padding-inline: 10px;
     margin: 0px;
 }
+
+/* purgecss ignore */
+code {
+    font-style: italic;
+    font-weight: 900;
+    @apply text-red;
+}
