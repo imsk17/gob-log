@@ -11,7 +11,7 @@ SkimTime: 8
 Author: Sumit Kumar
 ---
 
-# Introduction :smile:
+# :wave: Introduction
 
 Today we will be having a look at one of the coolest features that came with the go1.16 release, that is the `embed` package.
 This package is used to embed your static content in the binary. Earlier, we had to use third party packages like the [`packr`](https://github.com/gobuffalo/packr)
@@ -20,7 +20,7 @@ package. But with the introduction of the embed package, we do not need any thir
 Let's have a look at how this package works, but before that, make sure you have the go version >=1.16 installed on your machine.   
 You can check the version by entering the command `go version` in your terminal.
 
-## Let's start with a really basic example.
+# Let's start with a really basic example.
 
 First make a directory named `embedpg` and open this directory in your editor of choice. Now, initialize a go mod in this
 directory by the `go mod init embedpg`. Now create a main.go file, and a text file that we will embed into the binary. 
@@ -67,7 +67,7 @@ import (
 
 // Embed the static/ directory to the app to
 //serve favicons, custom css and all other `static` stuff.
-//go:embed static
+//go:embed static/
 var static embed.FS
 
 func main() {
@@ -88,7 +88,7 @@ func main() {
 }
 ```
 
-Here, I am embedding multiple directories which contain different items for this website to run. Looking carefully at this,
+Here, I am embedding the `static/` directories which contain different items for this website to run. Looking carefully at this,
 you will find that the types of these variables are not `[]bytes` but `embed.FS`. This type implements the `fs.FS` interface,
 and we can open any file of the directory by using the `Open()` method on this struct. Let's see how this is useful in web
 development. In this example I am using [fiber](https://github.com/gofiber/fiber) but you can use the `net/http` package,
@@ -96,7 +96,7 @@ and it will work just fine. With the app.Use() code block, I am exposing all the
 my binary to webserver. You can use this to expose your CSS files, Favicons and Fonts if you are using the golang's templating
 engine for server side rendering of your html just like this blog.
 
-## Conclusion 
+# :pushpin: Conclusion
 The `embed` package is a nice addition to the go library, and we gophers are here for it. If you want to learn more about
 this package, I would suggest you to check out the official docs [here](https://golang.org/pkg/embed/). If you are interested
 in this website's code, it is open source at GitHub [here](https://github.com/imsk17/gob-log). Make sure to :star: the repo,
