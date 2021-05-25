@@ -12,4 +12,5 @@ type Blog struct {
 	SkimTime int
 	Author   string
 	Href     string
+	Summary  string
 }

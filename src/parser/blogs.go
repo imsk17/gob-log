@@ -58,6 +58,7 @@ func HTMLify(filename string, fs embed.FS, theme string) (entities.Blog, error) 
 		Author:   metaData["Author"].(string),
 		Topic:    metaData["Topic"].(string),
 		Href:     filename,
+		Summary: metaData["Summary"].(string),
 	}
 	return b, nil
 }

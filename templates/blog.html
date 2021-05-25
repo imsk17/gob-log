@@ -6,8 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="/static/favicon.svg" type="image/x-icon" />
-  <title>{{.Blog.Title}}</title>
+  <title>{{.Blog.Title}} | imsk17's Blog </title>
   <link rel="stylesheet" href="/static/tailwind.g.css" />
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="{{.Blog.Title}} | imsk17's Blog" />
+  <meta name="description" content="{{.Blog.Summary}}" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://blog.imsk17.tech/{{.Blog.Href}}" />
+  <meta property="og:title" content="{{.Blog.Title}} | imsk17's Blog" />
+  <meta property="og:description" content="{{.Blog.Summary}}" />
+
+  <!-- Twitter -->
+  <meta property="twitter:url"  content="https://blog.imsk17.tech/{{.Blog.Href}}" />
+  <meta property="twitter:title" content="{{.Blog.Title}} | imsk17's Blog" />
+  <meta property="twitter:description" content="{{.Blog.Summary}}" />
 </head>
 
 <body class="sm:p-2 md:p-0 lg:p-0">
