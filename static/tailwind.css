@@ -63,3 +63,8 @@ code {
 .content h2 {
     font-size: clamp(0.8rem, 1.5vw, 1.6rem);
 }
+
+/* purgecss ignore */
+.content p {
+    line-height: 2rem;
+}
