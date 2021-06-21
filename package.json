@@ -9,7 +9,8 @@
   "scripts": {
     "build": "postcss static/tailwind.css -o static/tailwind.g.css",
     "clean": "rm -rf static/tailwind.g.css",
-    "release": "NODE_ENV=production postcss static/tailwind.css -o static/tailwind.g.css"
+    "release": "NODE_ENV=production postcss static/tailwind.css -o static/tailwind.g.css",
+    "watch": "nodemon --ignore static/tailwind.g.css -e css,html --exec yarn build"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
