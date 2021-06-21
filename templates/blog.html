@@ -20,7 +20,7 @@
   <meta property="og:description" content="{{.Blog.Summary}}" />
 
   <!-- Twitter -->
-  <meta property="twitter:url"  content="https://blog.imsk17.tech/{{.Blog.Href}}" />
+  <meta property="twitter:url" content="https://blog.imsk17.tech/{{.Blog.Href}}" />
   <meta property="twitter:title" content="{{.Blog.Title}} | imsk17's Blog" />
   <meta property="twitter:description" content="{{.Blog.Summary}}" />
 </head>
@@ -36,7 +36,7 @@
       <p class="text-blue font-semibold">{{.Blog.SkimTime}} Mins Read</p>
     </div>
     <hr class="border-hr border-dashed" />
-    <div class="content px-4 md:p-0">
+    <div class="content prose-sm md:prose-md lg:prose-lg px-4 py-8">
       {{unescape .Blog.Content}}
     </div>
   </div>
