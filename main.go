@@ -38,7 +38,15 @@ func main() {
 	}
 
 	// Setup a Template Engine
-	engine := html.NewFileSystem(http.FS(t), ".html")
+	var engine *html.Engine
+
+	if os.Getenv("GO_ENV") == "production" {
+		engine = html.NewFileSystem(http.FS(t), ".html")
+	} else {
+		// For Dev Reasons
+		engine = html.New(".", ".html")
+		engine.Reload(true)
+	}
 
 	// We will be using this function to unescape the html which is coming from
 	// goldmark markdown parser.
@@ -59,11 +67,15 @@ func main() {
 	handlers.SetupRoutes(app, posts)
 
 	// Mount the static directory
-	app.Use("/", filesystem.New(
-		filesystem.Config{
-			Root:   http.FS(static),
-			Browse: false,
-		}))
+	if os.Getenv("GO_ENV") == "production" {
+		app.Use("/", filesystem.New(
+			filesystem.Config{
+				Root:   http.FS(static),
+				Browse: false,
+			}))
+	} else {
+		app.Static("/static", "static/")
+	}
 
 	// Start the fiber app woo-hoo.
 	log.Panic(app.Listen(":" + PORT))
