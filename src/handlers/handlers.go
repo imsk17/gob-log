@@ -31,13 +31,22 @@ func blogHandler(mapBlogs *map[string]entities.Blog) fiber.Handler {
 
 func blogsHandler(blogs *[]entities.Blog) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
-		return ctx.Render("templates/index", fiber.Map{
+		return ctx.Render("templates/blogs", fiber.Map{
 			"NoBlogs": false, // Use this switch to show hide all blogs.
 			"Blogs":   blogs,
 			"Go":      runtime.Version(),
 		})
 	}
 }
+
+func landingHandler(blogs *[]entities.Blog) fiber.Handler {
+	return func(ctx *fiber.Ctx) error {
+		return ctx.Render("templates/index", fiber.Map{
+			"Go": runtime.Version(),
+		})
+	}
+}
+
 func SetupRoutes(app *fiber.App, posts embed.FS) {
 	blogMap := map[string]entities.Blog{}
 	var blogs, err = parser.ReadBlogs(posts)
@@ -47,6 +56,7 @@ func SetupRoutes(app *fiber.App, posts embed.FS) {
 	for _, v := range blogs {
 		blogMap[v.Href] = v
 	}
-	app.Get("/:title", blogHandler(&blogMap))
-	app.Get("/", blogsHandler(&blogs))
+	app.Get("/blog/:title", blogHandler(&blogMap))
+	app.Get("/blog", blogsHandler(&blogs))
+	app.Get("/", landingHandler(&blogs))
 }

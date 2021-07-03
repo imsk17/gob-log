@@ -1,5 +1,5 @@
 <footer>
-  <div class="flex justify-between font-medium h-9 w-screen bg-secondarybg">
+  <div class="flex justify-between font-medium h-9 w-auto bg-secondarybg">
     <div class="footer-tile bg-green">
       <p>NORMAL</p>
     </div>
@@ -18,12 +18,13 @@
       </div>
     </div>
   </div>
-  <div class="flex justify-between font-semibold text-white px-4">
-    <p>© Sumit Kumar</p>
-    <p>Served by
-      <span class="text-blue">
-        /gob-log
-      </span>
+  <div class="flex justify-between font-semibold text-white px-2">
+    <p>Go Version <span class="text-pink">
+        {{ . }}
+      </span></p>
+    <p>
+      Served by
+      <a class="text-blue no-underline" href="https://github.com/imsk17/gob-log">/gob-log</a>
     </p>
   </div>
 </footer>

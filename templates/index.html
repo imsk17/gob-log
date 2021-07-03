@@ -11,46 +11,132 @@
   <link rel="shortcut icon" href="/static/favicon.svg" type="image/x-icon" />
 
   <!-- Primary Meta Tags -->
-  <meta name="title" content="Sumit's Blog | Home" />
+  <meta name="title" content="Sumit Kumar | Home" />
   <meta name="description"
     content="Hi, I am a young, driven Software Engineer. I love working on anything software. On this blog, I write about all my adventures in the software world." />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://blog.imsk17.tech/" />
-  <meta property="og:title" content="Sumit's Blog | Home" />
+  <meta property="og:url" content="https://imsk17.tech/" />
+  <meta property="og:title" content="Sumit Kumar | Home" />
   <meta property="og:description"
     content="Hi, I am a young, driven Software Engineer. I love working on anything software. On this blog, I write about all my adventures in the software world." />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://blog.imsk17.tech/" />
-  <meta property="twitter:title" content="Sumit's Blog | Home" />
+  <meta property="twitter:url" content="https://imsk17.tech/" />
+  <meta property="twitter:title" content="Sumit Kumar | Home" />
   <meta property="twitter:description"
     content="Hi, I am a young, driven Software Engineer. I love working on anything software. On this blog, I write about all my adventures in the software world." />
 </head>
 
 <body>
-  {{ template "templates/components/header" .}}
-  <hr class="border-hr border-dashed my-4" />
-  {{if .NoBlogs}}
 
-  <h1 class="font-bold text-2xl text-center">
-    Sorry, I am lazy, I also can't write.
-  </h1>
+  <ul class="flex justify-center w-full list-none font-semibold text-xl">
+    <li>
+      <a class="text-red hover:text-white mx-4" href="/">imsk17</a>
+    </li>
+    <li>
+      <a class="text-red hover:text-white mx-4" href="/blog">blog</a>
+    </li>
+    <li>
+      <a class="text-red hover:text-white mx-4" href="/static/resume.pdf">Resume</a>
+    </li>
+  </ul>
 
-  {{else}}
-  <div class="flex flex-col">
-    <h1 class="m-0 p-0 text-green">
-      >> <span class="line-through">b</span>logs
-    </h1>
-    {{ range .Blogs }}
-    <div>{{template "templates/components/card" .}}</div>
-    {{ end }}
+  <div class="flex flex-col max-w-5xl m-auto h-full">
+    <div class="col-span-3">
+      <h1 class="text-yellow">
+        >> Sumit Kumar
+      </h1>
+      <hr>
+      </hr>
+      <h2 class="text-yellow">
+        >> Skills
+      </h2>
+      <ul class="list-none text-green text-lg p-0 skills">
+        <li>
+          > Go, Javascript, TypeScript, Dart, Python, Kotlin, Rust and other languages
+        </li>
+        <li>
+          > React/Next, Vue/Nuxt (Learning)
+        </li>
+        <li>
+          > FastAPI, Fiber, Gorilla Mux, Flask, Express
+        </li>
+        <li>
+          > Native Android, Flutter
+        </li>
+        <li>
+          > Docker
+        </li>
+        <li>
+          > AWS, GCP
+        </li>
+      </ul>
+      <h2 class="text-yellow">
+        >> Key Projects
+      </h2>
+      <ul class="p-0 list-none text-blue">
+        <li class="py-1">[ ]
+          <a class="text-red hover:text-white font-semibold" href="https://github.com/imsk17/mpv-android">
+            BetterPlayer</a>
+          > A Video Player for android that is just <i>better.</i> Fully written in kotlin.
+        </li>
+        <li class="py-1">[X]
+          <a class="text-red hover:text-white font-semibold" href="https://github.com/imsk17/gob-log">
+            This Website</a>
+          > A log themed blog, with VIM aesthetics.
+        </li>
+        <li class="py-1">[X]
+          <a class="text-red hover:text-white font-semibold" href="https://github.com/imsk17/GBU-Agenda">
+            GBU Agenda</a>
+          > A schedule app for my university in flutter.
+        </li>
+        <li class="py-1">[X]
+          <a class="text-red hover:text-white font-semibold" href="https://github.com/imsk17/NyaaChan">
+            NyaaChan</a>
+          > A telegram bot to scrape nyaa.si.
+        </li>
+      </ul>
+      <h2 class="text-yellow">
+        >> Quick Links
+      </h2>
+      <ul class="p-0 list-none">
+        <li class="py-1">
+          <a class="text-red hover:text-white font-semibold" href="https://t.me/imsk17">
+            Telegram
+          </a>
+        </li>
+        <li class="py-1">
+          <a class="text-red hover:text-white font-semibold" href="https://twitter.com/imsk_17">
+            Twitter
+          </a>
+        </li>
+        <li class="py-1">
+          <a class="text-red hover:text-white font-semibold" href="https://www.linkedin.com/in/sumit-kumar-477818190/">
+            LinkedIn
+          </a>
+        </li>
+        <li class="py-1">
+          <a class="text-red hover:text-white font-semibold" href="https://github.com/imsk17">
+            Github
+          </a>
+        </li>
+      </ul>
+      <hr>
+      </hr>
+      <h4 class="text-grey">
+        Copyright 2021 Sumit Kumar.
+      </h4>
+      <blockquote class="text-yellow my-8 leading-relaxed">
+        All opinions that may be listed here are my own and are not necessarily representative of my employers'; past,
+        present or future.
+      </blockquote>
+
+    </div>
   </div>
-  {{end}}
-
-  <div class="fixed bottom-0 left-0 right-0">
+  <div class="mt-14 bg-primarybg fixed bottom-0 left-0 right-0">
     {{ template "templates/components/footer" .Go}}
   </div>
 </body>
